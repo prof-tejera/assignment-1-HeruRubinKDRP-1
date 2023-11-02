@@ -1,43 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import TimeTracker from "./components/generic/TimeTracker";
 
-import DocumentationView from "./views/DocumentationView";
-import TimersView from "./views/TimersView";
-
-const Container = styled.div`
-  background: #f0f6fb;
-  height: 100vh;
-  overflow: auto;
-`;
-
-const Nav = () => {
+function App() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Timers</Link>
-        </li>
-        <li>
-          <Link to="/docs">Documentation</Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="App">
+      <TimeTracker type={"stopwatch"} duration={100} />
+    </div>
   );
-};
-
-const App = () => {
-  return (
-    <Container>
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/docs" element={<DocumentationView />} />
-          <Route path="/" element={<TimersView />} />
-        </Routes>
-      </Router>
-    </Container>
-  );
-};
+}
 
 export default App;

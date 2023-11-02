@@ -1,28 +1,25 @@
-import React, {useEffect, useState} from "react";
-import {StopwatchStyled} from "./stopwatch-styled";
-import {getTime} from "../../generic/utilities/get-time";
-import {NumberCardsClockDisplay} from "../../generic/TimerDisplays/NumberCardsClockDisplay";
+import React from 'react';
+import { FormattedTimeDisplay } from "../../generic/TimerDisplays/FormattedTimeDisplay";
 
-const Stopwatch = ({milliseconds}) => {
-    const [presentationTime, setTime] =useState({
-        tenths : 0,
-        seconds : 0,
-        minutes : 0,
-        hours : 0
-    });
+interface StopwatchProps {
+  tenths: number;  // tenths of a second passed from parent
+  duration: number;  // duration in seconds for the stopwatch
+}
 
-    useEffect(()=>setTime(getTime(milliseconds)), [milliseconds]);
+const Stopwatch: React.FC<StopwatchProps> = ({ tenths, duration }: StopwatchProps) => {
 
-    return (
-        <StopwatchStyled className="stopwatch-container">
-            <NumberCardsClockDisplay
-                hours={presentationTime.hours}
-                minutes={presentationTime.minutes}
-                seconds={presentationTime.seconds}
-                tenths={presentationTime.tenths}
-            />
-        </StopwatchStyled>
-    )
+  // Convert the duration to tenths of a second for comparison
+  const durationInTenths = duration * 100;
+
+  // Calculate the remaining time in tenths of a second
+  const remainingTime = durationInTenths - tenths > 0 ? durationInTenths - tenths : 0;
+
+  return (
+    <div>
+      <h3>Stopwatch Timer</h3>
+      <FormattedTimeDisplay tenths={remainingTime} />
+    </div>
+  );
 };
 
 export default Stopwatch;

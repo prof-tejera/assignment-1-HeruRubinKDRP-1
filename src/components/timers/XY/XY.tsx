@@ -1,20 +1,35 @@
+import React, { useEffect, useState } from 'react';
+import { FormattedTimeDisplay } from "../../generic/TimerDisplays/FormattedTimeDisplay";
 
-import {NumberCardsClockDisplay} from "../../generic/TimerDisplays/NumberCardsClockDisplay";
+interface XYProps {
+  tenths: number;  // tenths of a second passed from parent
+  duration: number;  // duration in seconds for each round
+  rounds: number;  // total number of rounds
+}
 
-import React from "react";
-import { XyStyled } from "./xy.styled";
+const XY: React.FC<XYProps> = (props : XYProps) => {
+  const [remainingTime, setRemainingTime] = useState(props.duration * 100);  // convert duration to tenths
 
-const XY = ( ) => {
+  useEffect(() => {
+    if (props.tenths === 0) {
+      // Reset the remaining time when the reset prop is true
+      setRemainingTime(props.duration * 100);
+    } else {
+      // Update the remaining time
+      const timeLeft = (props.duration * 100) - (props.tenths % (props.duration * 100));
+      setRemainingTime(timeLeft > 0 ? timeLeft : 0);
+    }
+  }, [props.tenths, props.duration]);
 
+  const currentRound = Math.floor(props.tenths / (props.duration * 100)) + 1;
 
-
-
-
-    return(
-        <XyStyled className="xy-timer-container">
-
-        </XyStyled>
-    )
+  return (
+    <div>
+      <h3>XY Timer</h3>
+      Round {currentRound} of {props.rounds}<br />
+      <FormattedTimeDisplay tenths={remainingTime} />
+    </div>
+  );
 };
 
 export default XY;

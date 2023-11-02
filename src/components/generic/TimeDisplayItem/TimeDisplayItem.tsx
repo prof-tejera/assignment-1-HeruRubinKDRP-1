@@ -1,15 +1,22 @@
 import {TimeItemStyled} from "./TimeDisplayStyled";
 import React from "react";
 
-export const TimeDisplayItem = ({displayNumber, unitOfTime, classes})=>{
+
+export interface TimeDisplayItemProps {
+    displayNumber : number,
+    unitOfTime : string,
+    classes : string
+}
+
+export const TimeDisplayItem = (props : TimeDisplayItemProps)=>{
     return(
-        <TimeItemStyled className={`time-unit-container ${classes}`}>
+        <TimeItemStyled className={`time-unit-container ${props.classes}`}>
             <div className="time-unit-label">
-                {unitOfTime}
+                {props.unitOfTime}
             </div>
             <div className="time-section-number">
                 <div className="number-container">
-                    {displayNumber}
+                    {props.displayNumber}
                 </div>
             </div>
         </TimeItemStyled>

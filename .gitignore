@@ -4,14 +4,12 @@
 /node_modules
 /.pnp
 .pnp.js
-/.idea
 
 # testing
 /coverage
 
 # production
 /build
-/storybook-static
 
 # misc
 .DS_Store

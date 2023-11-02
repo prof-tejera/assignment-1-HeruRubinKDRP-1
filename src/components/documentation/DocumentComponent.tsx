@@ -1,9 +1,9 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
   border: 1px solid #121212;
-  margin: 20px 0px;
+  margin: 20px 0;
 `;
 
 const Container = styled.div`
@@ -27,12 +27,28 @@ const RenderComponent = styled.div`
 
 const Documentation = styled.table``;
 
-const DocumentComponent = ({ title, component, propDocs }) => {
+
+
+
+export interface PropDoc {
+  prop : string;
+  description : string;
+  type : string;
+  defaultValue : string;
+}
+
+export interface iDocumentComponentProps {
+  title : string;
+  component : ReactElement;
+  propDocs : PropDoc[];
+}
+
+const DocumentComponent = ( props : iDocumentComponentProps) => {
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title>{props.title}</Title>
       <Container>
-        <RenderComponent>{component}</RenderComponent>
+        <RenderComponent>{props.component}</RenderComponent>
         <Documentation>
           <thead>
             <tr>
@@ -43,7 +59,7 @@ const DocumentComponent = ({ title, component, propDocs }) => {
             </tr>
           </thead>
           <tbody>
-            {propDocs.map((doc, index) => {
+            {props.propDocs.map((doc, index) => {
               return (
                 <tr key={index}>
                   <td>{doc.prop}</td>

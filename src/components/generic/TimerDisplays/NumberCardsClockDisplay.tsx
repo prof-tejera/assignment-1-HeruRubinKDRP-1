@@ -1,7 +1,14 @@
 import React from "react";
 
 
-export const NumberCardsClockDisplay=({hours, minutes, seconds, tenths})=>{
+export interface iNumberCardsClockDisplayProps {
+    hours: number;
+    minutes: number;
+    seconds : number;
+    tenths : number;
+}
+
+export const NumberCardsClockDisplay=(props : iNumberCardsClockDisplayProps)=>{
     return(
         <div className="time-cards-container" >
 
