@@ -1,6 +1,6 @@
 {
   "name": "assignment-1-herurubin-1",
-  "homepage": "https://prof-tejera.github.io/assignment-1-HeruRubinKDRP-1/build",
+  "homepage": "https://prof-tejera.github.io/assignment-1-HeruRubinKDRP-1/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +59,7 @@
     "@storybook/testing-library": "^0.2.2",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint-plugin-storybook": "^0.6.15",
+    "gh-pages": "^6.0.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.5.1",
     "webpack": "^5.89.0"
