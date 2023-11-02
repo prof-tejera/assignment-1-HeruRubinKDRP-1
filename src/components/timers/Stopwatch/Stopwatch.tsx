@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {StopwatchStyled} from "./stopwatch-styled";
 import {getTime} from "../../generic/utilities/get-time";
 import {NumberCardsClockDisplay} from "../../generic/TimerDisplays/NumberCardsClockDisplay";

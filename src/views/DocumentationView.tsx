@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import DocumentComponent from "../components/documentation/DocumentComponent";
 
-import Loading from "../components/generic/Loading";
-
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -25,7 +23,7 @@ const Documentation = () => {
         <Title>Documentation</Title>
         <DocumentComponent
           title="Loading spinner "
-          component={<Loading />}
+          component={<p>Loading</p>}
           propDocs={[
             {
               prop: "size",

@@ -1,4 +1,5 @@
 import {TimeItemStyled} from "./TimeDisplayStyled";
+import React from "react";
 
 export const TimeDisplayItem = ({displayNumber, unitOfTime, classes})=>{
     return(

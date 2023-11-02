@@ -1,4 +1,4 @@
-export const getTime =(milliseconds)=>{
+export const getTime =(milliseconds: number)=>{
     let scratchTime = {
         tenths : 0,
         seconds : 0,
